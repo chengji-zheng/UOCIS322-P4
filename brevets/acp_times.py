@@ -68,7 +68,7 @@ def close_time(control_dist_km, brevet_dist_km, brevet_start_time):
     else:
         if control_dist_km > step:
             for j in range(min_speeds):
-                time += round(((step / min_speeds[i]) * 60), 0)
+                time += round(((step / min_speeds[j]) * 60), 0)
         time += round(((step / min_speeds[0]) * 60), 0)    
     
     return brevet_start_time.shift(minutes=time).isoformat()
