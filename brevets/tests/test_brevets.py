@@ -45,11 +45,11 @@ def test_invalid_user_input():
     Testing different of invalid inputs
     """
     testting_time = arrow.now.format()
-    assert open_time(-60, 200, testing_time)                    #Testing with a negative number
+    assert open_time(-60, 200, testing_time)                    # Testing with a negative number
     assert close_time(-60, 200, testing_time)
-    assert open_time(60.123456, 200, testing_time)              #Testing with a float number
+    assert open_time(60.123456, 200, testing_time)              # Testing with a float number
     assert close_time(60.123456, 200, testing_time)
-    assert open_time("20", 200, testing_time)                   #Testing with a string 20
+    assert open_time("20", 200, testing_time)                   # Testing with a string 20
     assert close_time("20", 200, testing_time)
-    assert open_time(None, 200, testing_time)                       #Testing with an empty value
+    assert open_time(None, 200, testing_time)                       # Testing with an empty value
     assert close_time(None, 200, testing_time)
