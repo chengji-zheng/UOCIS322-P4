@@ -120,11 +120,16 @@
             // you need to pass much more!
             // View flask_brevets.py for details.
             function calc_times(control) {
-              var km = control.find("input[name='km']").val();
-              var open_time_field = control.find("input[name='open']");
-              var close_time_field = control.find("input[name='close']");
+               var km = control.find("input[name='km']").val();
+			      var distance = document.getElementById("brevet_dist_km").value;
+			      var err_msg = control.find("input[name='err_msg']");
+               var open_time_field = control.find("input[name='open']");
+               var close_time_field = control.find("input[name='close']");
+			      var dt = document.getElementById("begin_date").value;
+			      console.log("DISTANCE: " +  distance  + "  " + "DATETIME: " + dt + "    "+ "KM: " + km)
 
-              $.getJSON(TIME_CALC_URL, {km: km}).done(
+
+              $.getJSON(TIME_CALC_URL, {km: km, brevet_dist_km: distance, begin_date: dt}).done(
                 function(data) {
                    var times = data.result;
                    console.log("Got a response: ");
@@ -133,6 +138,7 @@
                    // so don't worry about those.
                    open_time_field.val(moment(times.open).format("YYYY-MM-DDTHH:mm"));
                    close_time_field.val(moment(times.close).format("YYYY-MM-DDTHH:mm"));
+				   err_msg.val(times.err_msg);
                  }
                ).fail(function(err){
                  // In case you get an error...
